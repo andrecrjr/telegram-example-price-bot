@@ -1,0 +1,1 @@
+To start your bot: yarn start inside the folder in the terminal!
