@@ -4,7 +4,7 @@ const axios = require("axios");
 //instantiate Telegraf with our token got in the BtFather
 //normally this is not appropriate, you will need to store the token in the server
 //but is just an example for everyone
-const bot = new Telegraf("1288128361:AAG_t6ZFgXEgKar3k51BpcRLu-eaaRMPHjQ");
+const bot = new Telegraf("yourtoken");
 
 //our command /start
 bot.command("start", (msg) => msg.reply(`Hello ${msg.from.username}`));
