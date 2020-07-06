@@ -1,10 +1,15 @@
 const Telegraf = require("telegraf");
 const axios = require("axios");
+const express = require("express");
+//get app inside express
+const app = express();
 
-//instantiate Telegraf with our token got in the BtFather
-//normally this is not appropriate, you will need to store the token in the server
-//but is just an example for everyone
-const bot = new Telegraf("1288128361:AAG_t6ZFgXEgKar3k51BpcRLu-eaaRMPHjQ");
+const CURRENT_URL = "here we will put our heroku address";
+//we will get the port from our web server process.env is a ENVIROMENT VAR
+//Heroku put this when will be host it
+let PORT = process.env.PORT || 3000;
+
+const bot = new Telegraf("827871793:AAFPj-0dY6C5MydqSkNy0M0aa_tWvUbQrzo");
 
 //our command /start
 bot.command("start", (msg) => msg.reply(`Hello ${msg.from.username}`));
@@ -51,5 +56,13 @@ bot.command("tezos", async (ctx) => {
   }
 });
 
-//start polling
-bot.startPolling();
+app.use(bot.webhookCallback("/bot"));
+bot.telegram.setWebhook(`${CURRENT_URL}/bot`);
+
+app.get("/", (req, res) => {
+  res.send("Our new tab!!");
+});
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Listen in the port ${PORT}`);
+});
