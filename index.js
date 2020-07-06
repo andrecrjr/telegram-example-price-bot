@@ -4,7 +4,7 @@ const express = require("express");
 //get app inside express
 const app = express();
 
-const CURRENT_URL = "here we will put our heroku address";
+const CURRENT_URL = "https://test-bot-publishox.herokuapp.com";
 //we will get the port from our web server process.env is a ENVIROMENT VAR
 //Heroku put this when will be host it
 let PORT = process.env.PORT || 3000;
