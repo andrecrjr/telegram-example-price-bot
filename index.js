@@ -4,12 +4,10 @@ const express = require("express");
 //get app inside express
 const app = express();
 
-const CURRENT_URL = "https://test-bot-publishox.herokuapp.com";
-//we will get the port from our web server process.env is a ENVIROMENT VAR
-//Heroku put this when will be host it
-let PORT = process.env.PORT || 3000;
-
-const bot = new Telegraf("827871793:AAFPj-0dY6C5MydqSkNy0M0aa_tWvUbQrzo");
+//instantiate Telegraf with our token got in the BtFather
+//normally this is not appropriate, you will need to store the token in the server
+//but is just an example for everyone
+const bot = new Telegraf("YOUR BOT TOKEN");
 
 //our command /start
 bot.command("start", (msg) => msg.reply(`Hello ${msg.from.username}`));
